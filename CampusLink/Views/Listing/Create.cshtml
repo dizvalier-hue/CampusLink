@@ -1,0 +1,45 @@
+﻿@model CampusLink.Models.Listing
+
+<form method="post" asp-action="Create">
+    <div class="border p-3 mt-4">
+        <h2 class="text-primary">Post New Listing</h2>
+        <hr />
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Type"></label>
+            <select asp-for="Type" asp-items="Html.GetEnumSelectList<CampusLink.Models.Enums.ListingType>()" class="form-select"></select>
+            <span asp-validation-for="Type" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CategoryId">Category</label>
+            <select asp-for="CategoryId" asp-items="@ViewBag.CategoryList" class="form-select"></select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PosterEmail"></label>
+            <input asp-for="PosterEmail" class="form-control" placeholder="you@uc.edu" />
+            <span asp-validation-for="PosterEmail" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Post</button>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Log In";
+}
+
+<style>
+    .login-wrapper {
+        display: flex;
+        min-height: auto; /* Changed from 80vh */
+        max-width: 900px; /* Added max-width */
+        margin: 50px auto; /* Centered */
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        border: 1px solid #1e293b;
+    }
+
+    .login-left {
+        background-color: #0f172a;
+        color: white;
+        padding: 40px; /* Changed from 60px */
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .login-right {
+        background-color: #1e293b; /* Dark Slate instead of White */
+        padding: 40px; /* Changed from 60px */
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .login-input {
+        background-color: #0b1120;
+        border: 1px solid #334155;
+        color: #e2e8f0;
+        padding: 12px 15px; /* Slightly smaller padding */
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+
+        .login-input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+            outline: none;
+            background-color: #0b1120;
+            color: white;
+        }
+</style>
+
+<div class="container">
+    <div class="login-wrapper">
+        <!-- Left Side (Dark) -->
+        <div class="login-left">
+            <h1 class="fw-bold mb-3" style="font-size: 2.5rem;">Welcome<br><span class="text-info">Back.</span></h1>
+            <p class="text-secondary mb-4">Log in to access your exclusive, verified student marketplace.</p>
+
+            <div class="d-flex mb-3">
+                <div class="bg-info text-dark rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 35px; height: 35px; font-weight: bold;">1</div>
+                <div>
+                    <h6 class="mb-1 text-white fw-bold">Verified Access</h6>
+                    <p class="text-secondary small mb-0">Only students with a valid school email can log in.</p>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="bg-info text-dark rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 35px; height: 35px; font-weight: bold;">2</div>
+                <div>
+                    <h6 class="mb-1 text-white fw-bold">Safe Trading</h6>
+                    <p class="text-secondary small mb-0">Buy, sell, and book services with zero strangers.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side (Dark Form) -->
+        <div class="login-right">
+            <h2 class="fw-bold mb-1 text-white">Sign In</h2>
+            <p class="text-secondary mb-3">Enter your credentials to continue.</p>
+
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger mb-3 fw-bold"></div>
+
+                <div class="mb-3">
+                    <label class="fw-bold mb-2 text-light small">School Email</label>
+                    <!-- CHANGED PLACEHOLDER HERE -->
+                    <input name="email" class="form-control login-input" placeholder="you@uc.edu" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="fw-bold mb-2 text-light small">Password</label>
+                    <input name="password" type="password" class="form-control login-input" placeholder="••••••••" required />
+                </div>
+
+                <!-- Changed py-3 to py-2 to make the button smaller -->
+                <button type="submit" class="btn btn-glow w-100 py-2 fw-bold mt-2" style="border-radius: 10px;">Sign In</button>
+
+                <div class="text-center mt-3">
+                    <a asp-action="Register" class="text-info text-decoration-none small fw-bold">No account yet? Register here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Trust & Safety";
+}
+
+<style>
+    .policy-card {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+    .policy-title {
+        color: #ffffff;
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+    .policy-text {
+        color: #94a3b8; /* Light gray */
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    .policy-heading {
+        color: #38bdf8; /* Neon Cyan */
+        font-weight: 700;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    .icon-box {
+        background-color: rgba(56, 189, 248, 0.1);
+        color: #38bdf8;
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="container">
+    <div class="policy-card">
+        <h1 class="policy-title">Trust & Safety Policy</h1>
+        <p class="policy-text mb-4">Last updated: November 2026</p>
+
+        <p class="policy-text">Welcome to Campus Link. We built this platform to solve a major problem: public groups like Facebook are unsafe because anyone can join. We take your safety seriously. Here is how we protect you.</p>
+
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="icon-box">🎓</div>
+                <h4 class="text-white fw-bold">Verified Students Only</h4>
+                <p class="policy-text small">You cannot create an account or post a listing unless you have a valid, verified school email address ending in <code>@@uc.edu</code>. This ensures you are only trading with actual peers from your campus.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="icon-box">🛡️</div>
+                <h4 class="text-white fw-bold">Zero Strangers</h4>
+                <p class="policy-text small">Because every user is verified, you don't have to worry about meeting up with random people from the city. Buy, sell, rent, and trade with confidence.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="icon-box">🤝</div>
+                <h4 class="text-white fw-bold">Trusted Tutoring</h4>
+                <p class="policy-text small">Finding a tutor shouldn't be hard. Our booking system lets you reserve time with fellow students who have already passed the classes you are taking.</p>
+            </div>
+        </div>
+
+        <hr style="border-color: #334155; margin: 40px 0;" />
+
+        <h3 class="policy-heading">1. Acceptable Use</h3>
+        <p class="policy-text">Campus Link is strictly for buying, selling, renting, borrowing, trading, and offering services (like tutoring). You may not use this platform to sell illegal items, promote hate speech, or harass other students. Violations will result in an immediate ban.</p>
+
+        <h3 class="policy-heading">2. Safe Meetups</h3>
+        <p class="policy-text">While we verify students, we still recommend meeting in public, well-lit campus areas (like the library or student union) to complete your transactions. Never share your personal bank details, passwords, or home address on the platform.</p>
+
+        <h3 class="policy-heading">3. Privacy</h3>
+        <p class="policy-text">We do not sell your data. Your email address is only used to verify your student status and to allow other students to contact you regarding your listings. We use essential cookies only to keep you logged in.</p>
+
+        <div class="mt-5 text-center">
+            <p class="policy-text">Have a safety concern? Contact the Campus Link Admin team.</p>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-glow px-4 py-2 mt-3">Back to Home</a>
+        </div>
+    </div>
+</div>

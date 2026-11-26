@@ -1,0 +1,39 @@
+@model CampusLink.Models.Category
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow border-0" style="background-color: #1e293b;">
+                <div class="card-header border-bottom border-secondary py-3">
+                    <h4 class="text-white mb-0">Create Category</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post">
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label text-light fw-bold"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="DisplayOrder" class="form-label text-light fw-bold"></label>
+                            <input asp-for="DisplayOrder" class="form-control" />
+                            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-glow w-50">Create</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary w-50">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

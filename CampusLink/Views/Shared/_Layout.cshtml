@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CampusLink</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/flatly/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <style>
+            /* Global Dark Mode Settings */
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: #0b1120; /* Deepest Navy */
+                color: #e2e8f0; /* Light Gray Text */
+            }
+
+            /* Navbar */
+            .navbar {
+                background-color: #0f172a !important; /* Slightly lighter navy */
+                border-bottom: 1px solid #1e293b !important;
+                padding: 15px 0;
+            }
+
+            .navbar-brand, .nav-link {
+                color: #e2e8f0 !important;
+                font-weight: 600;
+            }
+
+                .nav-link:hover {
+                    color: #38bdf8 !important; /* Neon Cyan */
+                }
+
+            /* Buttons */
+            .btn-glow {
+                background: linear-gradient(135deg, #0ea5e9, #2563eb);
+                color: white;
+                border-radius: 8px;
+                font-weight: 600;
+                border: none;
+                transition: all 0.3s ease;
+            }
+
+                .btn-glow:hover {
+                    box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+                    color: white;
+                }
+
+            /* Cards override Bootstrap's white */
+            .card {
+                background-color: #1e293b !important; /* Dark Slate */
+                border: 1px solid #334155 !important;
+                color: #e2e8f0;
+            }
+
+            /* Inputs */
+            .form-control {
+                background-color: #0f172a !important;
+                border: 1px solid #334155 !important;
+                color: #e2e8f0 !important;
+            }
+
+                .form-control:focus {
+                    border-color: #38bdf8 !important;
+                    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
+                }
+
+            footer {
+                background-color: #0f172a !important;
+                border-top: 1px solid #1e293b !important;
+                color: #94a3b8 !important;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold fs-4" asp-area="" asp-controller="Home" asp-action="Index">
+                    <span class="text-info">Campus</span>Link
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Listing" asp-action="Index">Marketplace</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Category" asp-action="Index">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+
+                    @using Microsoft.AspNetCore.Http
+                @{
+                        var userEmail = Context.Session.GetString("UserEmail");
+                    }
+                    <ul class="navbar-nav">
+                        @if (userEmail != null)
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link fw-bold text-info">👋 @userEmail</span>
+                            </li>
+                            <li class="nav-item ms-2">
+                                <form method="post" asp-controller="Account" asp-action="Logout">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm mt-1">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item me-2">
+                                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-glow px-4" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <partial name="_Notification" />
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer mt-5 py-4">
+        <div class="container text-center">
+            &copy; 2026 - CampusLink - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-info text-decoration-none">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

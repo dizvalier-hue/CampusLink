@@ -1,0 +1,109 @@
+﻿@model CampusLink.Models.Student
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<style>
+    .login-wrapper {
+        display: flex;
+        min-height: 80vh;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        margin-top: 30px;
+        border: 1px solid #1e293b;
+    }
+
+    .login-left {
+        background-color: #0f172a;
+        color: white;
+        padding: 60px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .login-right {
+        background-color: #1e293b;
+        padding: 60px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .login-input {
+        background-color: #0b1120;
+        border: 1px solid #334155;
+        color: #e2e8f0;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+
+        .login-input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+            outline: none;
+            background-color: #0b1120;
+            color: white;
+        }
+</style>
+
+<div class="container">
+    <div class="login-wrapper">
+        <!-- Left Side (Dark) -->
+        <div class="login-left">
+            <h1 class="fw-bold mb-4">Join the<br><span class="text-info">Network.</span></h1>
+            <p class="text-secondary mb-5">Create an account to start buying, selling, and tutoring on campus.</p>
+
+            <div class="d-flex mb-4">
+                <div class="bg-info text-dark rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; font-weight: bold;">✓</div>
+                <div>
+                    <h5 class="mb-1 text-white">Must be a Student</h5>
+                    <p class="text-secondary small mb-0">You must use an official @@yourschool.edu email.</p>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="bg-info text-dark rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; font-weight: bold;">✓</div>
+                <div>
+                    <h5 class="mb-1 text-white">100% Free</h5>
+                    <p class="text-secondary small mb-0">No credit cards, no hidden fees. Just campus trading.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side (Dark Form) -->
+        <div class="login-right">
+            <h2 class="fw-bold mb-2 text-white">Create Account</h2>
+            <p class="text-secondary mb-4">Enter your school email to sign up.</p>
+
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger mb-3 fw-bold"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="fw-bold mb-2 text-light"></label>
+                    <input asp-for="Email" class="form-control login-input" placeholder="you@yourschool.edu" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Password" class="fw-bold mb-2 text-light"></label>
+                    <input asp-for="Password" type="password" class="form-control login-input" placeholder="••••••••" />
+                    <span asp-validation-for="Password" class="text-danger small"></span>
+                </div>
+
+                <button type="submit" class="btn btn-glow w-100 py-3 fw-bold" style="border-radius: 10px;">Sign Up</button>
+
+                <div class="text-center mt-4">
+                    <a asp-action="Login" class="text-info text-decoration-none fw-bold">Already have an account? Log in</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

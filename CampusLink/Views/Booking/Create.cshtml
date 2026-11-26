@@ -1,0 +1,46 @@
+﻿@model CampusLink.Models.Booking
+
+<div class="container p-3">
+    <div class="card shadow border-0 mt-4">
+        <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="text-white py-2">Book Service: @ViewBag.ListingTitle</h2>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-4">
+            <form method="post">
+                <input asp-for="ListingId" hidden />
+                <div class="border p-3 mt-4">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="BookerEmail"></label>
+                        <input asp-for="BookerEmail" class="form-control" placeholder="you@uc.edu" />
+                        <span asp-validation-for="BookerEmail" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="BookingDate"></label>
+                        <input asp-for="BookingDate" type="datetime-local" class="form-control" />
+                        <span asp-validation-for="BookingDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-success form-control">Confirm Booking</button>
+                        </div>
+                        <div class="col-6">
+                            <a asp-controller="Listing" asp-action="Index" class="btn btn-secondary form-control">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
